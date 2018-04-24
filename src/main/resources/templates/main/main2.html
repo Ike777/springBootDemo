@@ -24,9 +24,9 @@
 		<link th:href="@{{path}/js/3rd/bootstrap/css/bootstrap-tab.css(path=${contextPath})}" />
 		<link th:href="@{{path}/js/3rd/bootstrap/css/bootstrap-cerulen.min.css(path=${contextPath})}" />
 	
-        <script th:src="@{{path}/assets/js/jquery.mCustomScrollbar.concat.min.js(path=${contextPath})}" />
-        <script th:src="@{{path}/assets/js/custom.js(path=${contextPath})}" />
-        <script th:src="@{{path}/js/3rd/bootstrap/js/bootstrap-tab.js(path=${contextPath})}" />
+        <script th:src="@{{path}/assets/js/jquery.mCustomScrollbar.concat.min.js(path=${contextPath})}" ></script>
+        <script th:src="@{{path}/assets/js/custom.js(path=${contextPath})}" ></script>
+        <script th:src="@{{path}/js/3rd/bootstrap/js/bootstrap-tab.js(path=${contextPath})}" ></script>
 
         <!-- 地图 -->
         <script type="text/javascript" th:src="@{http://api.map.baidu.com/api?v=2.0&ak=nfuoTEO917xze9Hitfa1Kv4V9Blxan8m}" ></script>
@@ -74,19 +74,7 @@
                                     <li><a href="#" class="menuItem" url="./mapDemp2">Dashboard 3</a></li>
                                 </ul>
                             </div>
-                        </li>    
-                        <!--           
-                        <li class="sidebar-dropdown">
-                            <a href="#"><i class="fa fa-shopping-cart"></i><span>E-commerce</span><span class="badge">3</span></a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li><a href="#">Products<span class="badge">2</span></a></li>
-                                    <li><a href="#">Orders</a></li>
-                                    <li><a href="#">Credit cart</a></li>
-                                </ul>
-                            </div>
                         </li>
-                          -->   
                          <li class="sidebar-dropdown">
                             <a href="#"><i class="fa fa-diamond"></i><span>人事管理</span></a>
                             <div class="sidebar-submenu">
@@ -150,39 +138,33 @@
         </div><!-- page-wrapper -->
 
     </body>
+    <script th:inline="javascript">
+        var ctx = /*[[@{/}]]*/ '';
 
+        //开启左边栏
+        $(".page-wrapper").toggleClass("toggled");
+
+        $("#tabContainer").tabs({
+            data: [{
+                id: '地图展示',
+                text: '地图展示',
+                url: ctx+"views/maps/showMap",
+                closeable: true
+            },
+                {
+                    id: '区域列表',
+                    text: '区域列表',
+                    url: ctx+"views/maps/regionList",
+                    closeable: true
+                }],
+            showIndex: 0,
+            loadAll: false
+        })
+
+        function addTab(id,title,url){
+            $("#tabContainer").data("tabs").addTab({'id': id, 'text': title, 'closeable': true, 'url': url})
+        }
+
+    </script>
 </html>
-<script>
-//开启左边栏
-$(".page-wrapper").toggleClass("toggled");
 
-$("#tabContainer").tabs({
-    data: [{
-        id: '地图展示',
-        text: '地图展示',
-        url: "/biApp/views/maps/showMap.html",
-        closeable: true
-    },
-    {
-        id: '区域列表',
-        text: '区域列表',
-        url: "/biApp/views/maps/regionList.html",
-        closeable: true
-    }],
-    showIndex: 0,
-    loadAll: false
-})
-
-//$("#tabContainer").data("tabs").addTab({id: 'test', text: 'addTab', closeable: true, url: './mapDemp2.html'});
-
-/* $(".menuItem").bind("click",function(event,data){
-	addTab('aaa','aaa',this);
-	return false;
-}); */
-
-
-function addTab(id,title,url){
-	$("#tabContainer").data("tabs").addTab({'id': id, 'text': title, 'closeable': true, 'url': url})
-}
-
-</script>

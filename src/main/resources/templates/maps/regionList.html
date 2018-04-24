@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -12,38 +12,38 @@
 	
 	
 	<!-- 引入Bootstrap -->
-	<script src="/biApp/js/3rd/jquery3.2.1.js"></script>
-	<script src="/biApp/js/3rd/bootstrap/js/bootstrap.min.js"></script>
-	<link href="/biApp/js/3rd/bootstrap/css/bootstrap.css" rel="stylesheet">
-	<link href="/biApp/js/3rd/bootstrap/css/bootstrap-tab.css" >
-	<link href="/biApp/js/3rd/bootstrap/css/bootstrap-cerulen.min.css" >
+	<script th:href="@{{path}/js/3rd/jquery3.2.1.js(path=${contextPath})}"></script>
+	<script th:href="@{{path}/js/3rd/bootstrap/js/bootstrap.min.js(path=${contextPath})}"></script>
+	<link th:href="@{{path}/js/3rd/bootstrap/css/bootstrap.css(path=${contextPath})}" rel="stylesheet">
+	<link th:href="@{{path}/js/3rd/bootstrap/css/bootstrap-tab.css(path=${contextPath})}" >
+	<link th:href="@{{path}/js/3rd/bootstrap/css/bootstrap-cerulen.min.css(path=${contextPath})}" >
 	
-	<script src="/biApp/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="/biApp/assets/js/custom.js"></script>
-	<script src="/biApp/js/3rd/bootstrap/js/bootstrap-tab.js"></script>
+	<script th:href="@{{path}/assets/js/jquery.mCustomScrollbar.concat.min.js(path=${contextPath})}"></script>
+	<script th:href="@{{path}/assets/js/custom.js(path=${contextPath})}"></script>
+	<script th:href="@{{path}/js/3rd/bootstrap/js/bootstrap-tab.js(path=${contextPath})}"></script>
 	
 	<!-- 地图 -->
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nfuoTEO917xze9Hitfa1Kv4V9Blxan8m"></script> 
 	<script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
 		
-	<script src="/biApp/views/maps/mapManager.js"></script>
+	<script th:src="@{{path}/views/maps/mapManager.js(path=${contextPath})}"></script>
 	<!-- 引入bootstrap-table -->
-	<script src="/biApp/js/3rd/bootstrap/bootstrapTable/bootstrap-table.min.js"></script>
-	<link href="/biApp/js/3rd/bootstrap/bootstrapTable/bootstrap-table.min.css" rel="stylesheet" />
-    <script src="/biApp/js/3rd/bootstrap/bootstrapTable/locale/bootstrap-table-zh-CN.js"></script>
+	<script th:src="@{{path}/js/3rd/bootstrap/bootstrapTable/bootstrap-table.min.js(path=${contextPath})}"></script>
+	<link th:href="@{{path}/js/3rd/bootstrap/bootstrapTable/bootstrap-table.min.css(path=${contextPath})}" rel="stylesheet" />
+    <script th:src="@{{path}/js/3rd/bootstrap/bootstrapTable/locale/bootstrap-table-zh-CN.js(path=${contextPath})}"></script>
 	<!-- 引入bootstrap-select -->
-	<script src="/biApp/js/3rd/bootstrap/select/js/bootstrap-select.min.js"></script>
-	<script src="/biApp/js/3rd/bootstrap/select/js/i18n/defaults-zh_CN.min.js"></script>
-	<link href="/biApp/js/3rd/bootstrap/select/css/bootstrap-select.min.css" rel="stylesheet" />
+	<script th:src="@{{path}/js/3rd/bootstrap/select/js/bootstrap-select.min.js(path=${contextPath})}"></script>
+	<script th:src="@{{path}/js/3rd/bootstrap/select/js/i18n/defaults-zh_CN.min.js(path=${contextPath})}"></script>
+	<link th:href="@{{path}/js/3rd/bootstrap/select/css/bootstrap-select.min.css(path=${contextPath})}" rel="stylesheet" />
 	<!-- messenger -->
-	<script src="/biApp/js/3rd/bootstrap/messenger/js/messenger.min.js"></script>
-	<script src="/biApp/js/3rd/bootstrap/messenger/js/messenger-theme-future.js"></script>
-	<link href="/biApp/js/3rd/bootstrap/messenger/css/messenger.css" rel="stylesheet" />
-	<link href="/biApp/js/3rd/bootstrap/messenger/css/messenger-theme-future.css" rel="stylesheet" />
+	<script th:src="@{{path}/js/3rd/bootstrap/messenger/js/messenger.min.js(path=${contextPath})}"></script>
+	<script th:src="@{{path}/js/3rd/bootstrap/messenger/js/messenger-theme-future.js(path=${contextPath})}"></script>
+	<link th:href="@{{path}/js/3rd/bootstrap/messenger/css/messenger.css(path=${contextPath})}" rel="stylesheet" />
+	<link th:href="@{{path}/js/3rd/bootstrap/messenger/css/messenger-theme-future.css(path=${contextPath})}" rel="stylesheet" />
 	
 	<!-- 引入公共方法 -->
-	<script src="/biApp/js/service/authService.js"></script>
-	<script src="/biApp/js/service/messageService.js"></script>
+	<script th:src="@{{path}/js/service/authService.js(path=${contextPath})}"></script>
+	<script th:src="@{{path}/js/service/messageService.js(path=${contextPath})}"></script>
 	
 	<style type="text/css">
 		body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
@@ -316,6 +316,7 @@
 		
 		
 		$(function () {
+            var ctx = /*[[@{/}]]*/ '';
 			var points = [];
 			var markers = [];
 			var regionObj ={};
@@ -344,7 +345,7 @@
 			
 			//创建地图标物
 			var pt = new BMap.Point(120.33, 31.61);
-			var myIcon = new BMap.Icon("/biApp/css/map/mapIcon1.png", new BMap.Size(37,37),{'imageOffset':new BMap.Size(-291,0)});
+			var myIcon = new BMap.Icon(ctx+"/css/map/mapIcon1.png", new BMap.Size(37,37),{'imageOffset':new BMap.Size(-291,0)});
 			var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
 			
 			marker2.addEventListener("click",attribute);
@@ -396,7 +397,7 @@
 		        //初始化Table
 		        oTableInit.Init = function () {
 		        	regionTable = $('#tb_departments').bootstrapTable({
-		                url: '/biApp/region/list.do',         //请求后台的URL（*）
+		                url: ctx+'/api/region/list',         //请求后台的URL（*）
 		                method: 'post',                      //请求方式（*）
 		               toolbar: '#toolbar',                //工具按钮用哪个容器
 		                striped: true,                      //是否显示行间隔色
