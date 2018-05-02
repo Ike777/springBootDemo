@@ -24,7 +24,6 @@ if(isTest){
 
 SysService.doPost = function(data,url,cb){
 
-	return;
 	$.ajax({
 		  type: 'POST',
 		  url: url,

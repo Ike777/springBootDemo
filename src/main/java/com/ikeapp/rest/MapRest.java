@@ -22,12 +22,21 @@ public class MapRest {
     @Autowired
     private MapRegionService mapRegionService;
 
+    @RequestMapping(value = "/allRegion")
+    public List<MapRegionDomain> listAllRegion(){
+        try {
+            return mapRegionService.listAllRegions();
+        } catch (BizException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * 获取区域列表
      * @return
      */
-    @RequestMapping(value = "/regions.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/region/list")
     public AscResponse<List<MapRegionDomain>> getRegionList() {
         AscResponse<List<MapRegionDomain>> response = new AscResponse<>("", false);
         try {
