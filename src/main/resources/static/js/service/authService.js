@@ -23,7 +23,7 @@ if(isTest){
 }
 
 SysService.doPost = function(data,url,cb){
-	alert('21');
+
 	return;
 	$.ajax({
 		  type: 'POST',
