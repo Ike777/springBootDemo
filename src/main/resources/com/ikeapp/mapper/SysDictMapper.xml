@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ikeapp.mapper.SysDictDao">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ikeapp.entity.SysDict">
+		<id column="ID" property="id" />
+		<result column="CODE" property="code" />
+		<result column="VALUE" property="value" />
+		<result column="PARENT" property="parent" />
+		<result column="COMMENTS" property="comments" />
+		<result column="DISABLED" property="disabled" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="VERSION" property="version" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID AS id, CODE AS code, VALUE AS value, PARENT AS parent, COMMENTS AS comments, DISABLED AS disabled, CREATE_DATE AS createDate, VERSION AS version
+    </sql>
+
+</mapper>

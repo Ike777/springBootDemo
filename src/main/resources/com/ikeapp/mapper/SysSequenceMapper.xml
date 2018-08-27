@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ikeapp.mapper.SysSequenceDao">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ikeapp.entity.SysSequence">
+		<id column="table_name" property="tableName" />
+		<result column="start_date" property="startDate" />
+		<result column="next_val" property="nextVal" />
+		<result column="increment" property="increment" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        table_name AS tableName, start_date AS startDate, next_val AS nextVal, increment, update_time AS updateTime
+    </sql>
+
+</mapper>
