@@ -99,13 +99,10 @@
 	                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
 	            </button>
 	        </div>
-	        
 		  	<table id="tb_departments"></table>
 		   </div>
 		  </div>
 		</div>
-
-	
 
 	<div id="regionManagerMap" style=""></div>
 	<div id="mapBar" class="btn-group" style="margin-left: 400px;margin-top: -1460px;">
@@ -349,11 +346,7 @@
 			var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
 			
 			marker2.addEventListener("click",attribute);
-			
-			
 			map.addOverlay(marker2);              // 将标注添加到地图中
-			
-			
 			
 			//加载选择框
 			$('.selectpicker').selectpicker({
@@ -361,9 +354,6 @@
 			  size: 5
 			});
 
-			
-			
-			
 			function attribute(){
 				var p = marker2.getPosition();  //获取marker的位置
 				alert("位置是" + p.lng + "," + p.lat);    
@@ -397,7 +387,7 @@
 		        //初始化Table
 		        oTableInit.Init = function () {
 		        	regionTable = $('#tb_departments').bootstrapTable({
-		                url: ctx+'/api/region/list',         //请求后台的URL（*）
+		                url: ctx+'/api/map/region/list',         //请求后台的URL（*）
 		                method: 'post',                      //请求方式（*）
 		               toolbar: '#toolbar',                //工具按钮用哪个容器
 		                striped: true,                      //是否显示行间隔色
@@ -421,7 +411,13 @@
 		                showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
 		                cardView: false,                    //是否显示详细视图
 		                detailView: false,                   //是否显示父子表
-		                columns:regionColumns
+		                columns:regionColumns,
+                        responseHandler: function(res) {
+                            return {
+                                "total": 1,//总页数
+                                "rows": res.t   //数据
+                            };
+                        }
 		            });
 		        };
 
@@ -607,7 +603,6 @@
 		function addMapIcons(e){
 			tmpIcon = {};
 			//console.log(e.point.lng + ", " + e.point.lat);
-	    	
 	    	//地图上描绘该点
 	    	var marker = new BMap.Marker(new BMap.Point(e.point.lng,e.point.lat));
 	    	map.addOverlay(marker);
@@ -615,14 +610,9 @@
 	    	var tmpPoint = {};
 			tmpPoint.lng = e.point.lng;
 			tmpPoint.lat = e.point.lat;
-			
 	    	tmpIcon.point = tmpPoint;
-	    	
 	    	console.log(regionTable.bootstrapTable('getSelections'));
-	    	
 	    	tmpIcon.regionId = regionTable.bootstrapTable('getSelections').id;
-	    	
-
 		}
 		
 		function submitIcon(){
