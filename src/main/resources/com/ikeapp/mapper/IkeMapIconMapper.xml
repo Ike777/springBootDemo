@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ikeapp.mapper.IkeMapIconDao">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.ikeapp.entity.IkeMapIcon">
+		<id column="ID" property="id" />
+		<result column="ICON_NAME" property="iconName" />
+		<result column="REGION_ID" property="regionId" />
+		<result column="POINT_ID" property="pointId" />
+		<result column="ICON_ST" property="iconSt" />
+		<result column="REAL_ESTATE_ST" property="realEstateSt" />
+		<result column="APARTMENT_ST" property="apartmentSt" />
+		<result column="IS_ESTATE" property="isEstate" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="SYS_CREATE_DATE" property="sysCreateDate" />
+		<result column="VERSION" property="version" />
+		<result column="DISABLED" property="disabled" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID AS id, ICON_NAME AS iconName, REGION_ID AS regionId, POINT_ID AS pointId, ICON_ST AS iconSt, REAL_ESTATE_ST AS realEstateSt, APARTMENT_ST AS apartmentSt, IS_ESTATE AS isEstate, CREATE_DATE AS createDate, SYS_CREATE_DATE AS sysCreateDate, VERSION AS version, DISABLED AS disabled
+    </sql>
+
+</mapper>
