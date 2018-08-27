@@ -2,7 +2,6 @@ package com.ikeapp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * created by wei.shen
@@ -11,8 +10,27 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class BaseController {
 
-    @RequestMapping("/main")
+
+
+  /*  @RequestMapping("/main")
     public String first(){
         return "main";
+    }*/
+    @RequestMapping("/")
+    public String first(){
+
+        return "test";
+    }
+    @RequestMapping("/login1")
+    public String login1(){
+
+        return "login1";
+    }
+
+    @RequestMapping("/main2")
+    public String main2(){
+
+
+        return "main/main2";
     }
 }

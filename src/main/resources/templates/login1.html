@@ -20,10 +20,10 @@
 	<div class="container">
 		<h1>Welcome</h1>
 		
-		<form class="form">
-			<input type="text" id="userName" placeholder="Username">
-			<input type="password" id="password" placeholder="Password">
-			<button type="submit" id="login-button">Login</button>
+		<form class="form" id="loginform" >
+			<input type="text" id="userName" name = "userName" placeholder="admin">
+			<input type="password" id="password" name ="password" placeholder="admin">
+			<button type="submit" id="login-button" >Login</button>
 		</form>
 	</div>
 	
@@ -44,9 +44,33 @@
 </html>
 <script type="text/javascript">
 $("#login-button").bind('click',function(){
-    alert('Click Login.');
-	doPost({userName:$('#userName').value},function(){
-		alert("Click Login.");
+    //alert('Click Login.');
+	//doPost({userName:$('#userName').value},function(){
+	//	alert("Click Login.");
+    var ctx = /*[[@{/}]]*/ '';
+    var username = $('#userName').val();
+    var password = $('#password').val();
+
+    $.ajax({
+		type:"post",
+		data:{"userName":username,"password":password},
+
+		url:ctx+"/login/login",
+		success:function(result){
+		    if(result.succ==true){
+
+		        alert(result.succ);
+                window.location = "main2";
+			}else{
+				alert("用户名或密码错误");
+                window.location = "login1";
+			}
+
+		},
+
 	});
+	// });
 });
+
+
 </script>
