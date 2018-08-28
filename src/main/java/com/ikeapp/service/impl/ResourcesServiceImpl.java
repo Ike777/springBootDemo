@@ -1,7 +1,7 @@
 package com.ikeapp.service.impl;
 
 import com.ikeapp.entity.Resources;
-import com.ikeapp.mapper.ResourcesDao;
+import com.ikeapp.mapper.ResourcesMapper;
 import com.ikeapp.service.ResourcesService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2018-08-23
  */
 @Service
-public class ResourcesServiceImpl extends ServiceImpl<ResourcesDao, Resources> implements ResourcesService {
+public class ResourcesServiceImpl extends ServiceImpl<ResourcesMapper, Resources> implements ResourcesService {
 	
 }

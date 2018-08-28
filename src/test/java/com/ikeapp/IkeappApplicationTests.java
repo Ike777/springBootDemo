@@ -1,7 +1,7 @@
 package com.ikeapp;
 
 import com.ikeapp.entity.Resources;
-import com.ikeapp.mapper.ResourcesDao;
+import com.ikeapp.mapper.ResourcesMapper;
 import com.ikeapp.service.ResourcesService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,14 +14,14 @@ import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@MapperScan("com.ikeapp.mapper")
+@MapperScan("com.ikeapp.mapper*")
 public class IkeappApplicationTests {
 
 	@Resource
 	private ResourcesService resourcesService;
 
 	@Resource
-	private ResourcesDao dao;
+	private ResourcesMapper dao;
 
 	@Test
 	public void contextLoads() {

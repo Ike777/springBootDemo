@@ -13,7 +13,7 @@ import java.util.List;
  * @author 龙朝飞
  * @since 2018-08-23
  */
-public interface ResourcesDao extends BaseMapper<Resources> {
+public interface ResourcesMapper extends BaseMapper<Resources> {
 
 
     List<Resources> test();

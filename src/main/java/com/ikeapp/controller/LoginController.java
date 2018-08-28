@@ -1,5 +1,6 @@
 package com.ikeapp.controller;
 
+
 import com.ikeapp.util.ResponseJson;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,4 +30,5 @@ public class LoginController {
         return model;
 
     }
+
 }
