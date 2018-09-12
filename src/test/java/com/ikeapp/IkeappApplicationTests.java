@@ -6,6 +6,8 @@ import com.ikeapp.service.ResourcesService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,6 +20,8 @@ import java.util.Date;
 @MapperScan("com.ikeapp.mapper*")
 public class IkeappApplicationTests {
 
+	Logger log = LoggerFactory.getLogger(IkeappApplicationTests.class);
+
 	@Resource
 	private ResourcesService resourcesService;
 
@@ -27,22 +31,14 @@ public class IkeappApplicationTests {
 	@Test
 	public void contextLoads() {
 		System.out.println(dao.test().size());
+		log.info("----  Start  -----");
+
 		Resources resource = new Resources();
-		resource.setLevel("1");
-		resource.setName("ceshi");
-		resource.setCreatedTime(new Date());
-		resource.setUpdateTime(new Date());
-		resource.setResKey("ce");
-		resource.setUrl("/////");
-		resource.setResKey("fffff");
-		resource.setDescription("cccccc");
-		//resource.setId(3);
-		resource.setParentId(1);
-		resource.setType("2");
-		resource.setResUrl("///////");
-		dao.insert(resource);
+		resource.setId(1039792035564453889L);
+		//dao.insert(resource);
 		//resourcesService.insert(resource);
-		dao.selectOne(resource);
+
+		log.info("Entity:{}",dao.selectOne(resource));
 	}
 
 }
