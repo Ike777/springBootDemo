@@ -20,7 +20,7 @@ public class Resources extends Model<Resources> {
     /**
      * 表名
      */
-	private Integer id;
+	private Long id;
     /**
      * 日期
      */
@@ -34,18 +34,21 @@ public class Resources extends Model<Resources> {
 	@TableField("update_time")
 	private Date updateTime;
 	private String name;
+	@TableField("parent_id")
 	private Integer parentId;
+	@TableField("res_key")
 	private String resKey;
+	@TableField("res_url")
 	private String resUrl;
 	private String type;
 	private String level;
 
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

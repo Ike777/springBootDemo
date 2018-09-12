@@ -1,0 +1,94 @@
+#app
+server:
+    port: 8088
+
+#spring
+spring:
+  devtools:
+    restart:
+      enabled: false
+  thymeleaf:
+      prefix: classpath:/templates/
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ikedb?charset=utf8mb4&serverTimezone=UTC&useSSL=false&nullNamePatternMatchesAll=true
+    username: root
+    password: Root1234
+    initialSize : 5
+    minIdle : 5
+    maxActive : 20
+    # 配置获取连接等待超时的时间
+    maxWait : 30000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis : 30000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis : 300000
+    validationQuery : SELECT 1 FROM DUAL
+    testWhileIdle : true
+    testOnBorrow : false
+    testOnReturn : false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements : true
+    maxPoolPreparedStatementPerConnectionSize : 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    # filters : stat,wall,log4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties :
+      druid:
+        stat:
+          mergeSql : true
+    druid:
+      stat:
+        slowSqlMillis : 5000
+
+
+  # H2 DATABASE CONFIG
+  # datasource:
+  #  type: com.zaxxer.hikari.HikariDataSource
+  #  schema: classpath:/db/schema-h2.sql
+  #  data: classpath:/db/data-h2.sql
+  #  url: jdbc:h2:mem:testdb
+  #  username: sa
+  #  password: sa
+  #  platform: h2
+  #  initialization-mode: always
+  #  continue-on-error: true
+  # h2:
+  #  console:
+  #    enabled: true
+  #    path: /console
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.ikeapp.entity.domain
+  # typeEnumsPackage: com.baomidou.springboot.entity.enums
+  global-config:
+    # 数据库相关配置
+    db-config:
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: id_worker
+      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: true
+      #数据库大写下划线转换
+      #capital-mode: true
+      #逻辑删除配置
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      db-type: h2
+    #刷新mapper 调试神器
+    refresh: true
+  # 原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+##logging
+#logging:
+#  level: warn
+
+connection:
+ testName: test

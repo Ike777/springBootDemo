@@ -46,6 +46,6 @@ public class MapRegionService {
         regionPointsVo.getPoints().stream().forEach(item -> {
             item.setRegionId(region.getId());
         });
-        pointsRepository.saveAll(regionPointsVo.getPoints());
+        pointsRepository.save(regionPointsVo.getPoints());
     }
 }

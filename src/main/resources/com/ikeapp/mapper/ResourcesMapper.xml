@@ -10,7 +10,7 @@
 		<result column="created_time" property="createdTime" />
 		<result column="update_time" property="updateTime" />
 		<result column="name" property="name" />
-		<result column="parentId" property="parentId" />
+		<result column="parent_Id" property="parentId" />
 		<result column="resKey" property="resKey" />
 		<result column="resUrl" property="resUrl" />
 		<result column="type" property="type" />
@@ -19,7 +19,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, url, description, created_time AS createdTime, update_time AS updateTime, name, parentId, resKey, resUrl, type, level
+        id, url, description, created_time AS createdTime, update_time AS updateTime, name, parent_Id, resKey, resUrl, type, level
     </sql>
 
 	

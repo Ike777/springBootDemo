@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -25,9 +26,7 @@ public class IkeappApplicationTests {
 
 	@Test
 	public void contextLoads() {
-
 		System.out.println(dao.test().size());
-
 		Resources resource = new Resources();
 		resource.setLevel("1");
 		resource.setName("ceshi");
@@ -37,13 +36,13 @@ public class IkeappApplicationTests {
 		resource.setUrl("/////");
 		resource.setResKey("fffff");
 		resource.setDescription("cccccc");
-		resource.setId(3);
+		//resource.setId(3);
 		resource.setParentId(1);
 		resource.setType("2");
 		resource.setResUrl("///////");
 		dao.insert(resource);
 		//resourcesService.insert(resource);
-		//dao.selectOne(resource);
+		dao.selectOne(resource);
 	}
 
 }

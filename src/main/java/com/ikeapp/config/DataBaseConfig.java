@@ -5,52 +5,46 @@ import liquibase.integration.spring.SpringLiquibase;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.PropertySource;
-
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import javax.sql.DataSource;
-import java.sql.SQLException;
 
 /**
  * @author: wei.shen
  * @date: 2018/8/22
  */
-@Configuration
-@ConfigurationProperties
-@PropertySource(value = {"classpath:config/jdbc.properties"})
+//@Configuration
 @MapperScan("com.ikeapp.mapper*")
 public class DataBaseConfig {
 
+    @Value("${spring.datasource.url}")
+    String jdbcUrl;
 
-    @Value("${datasource.url}")
-    private String dbUrl;
+    @Value("${spring.datasource.username}")
+    String username;
 
-    @Value("${datasource.username}")
-    private String username;
-
-    @Value("${datasource.password}")
-    private String password;
+    @Value("${spring.datasource.password}")
+    String password;
 
     @Value("${spring.datasource.driverClassName}")
-    private String driverClassName;
+    String driverClassName;
 
     @Value("${spring.datasource.initialSize}")
-    private int initialSize;
+    int initialSize;
 
     @Value("${spring.datasource.minIdle}")
-    private int minIdle;
+    int minIdle;
 
     @Value("${spring.datasource.maxActive}")
-    private int maxActive;
+    int maxActive;
 
     @Value("${spring.datasource.maxWait}")
-    private int maxWait;
+    int maxWait;
 
     @Value("${spring.datasource.timeBetweenEvictionRunsMillis}")
-    private int timeBetweenEvictionRunsMillis;
+    int timeBetweenEvictionRunsMillis;
 
     @Value("${spring.datasource.minEvictableIdleTimeMillis}")
     private int minEvictableIdleTimeMillis;
@@ -73,31 +67,32 @@ public class DataBaseConfig {
     @Value("${spring.datasource.maxPoolPreparedStatementPerConnectionSize}")
     private int maxPoolPreparedStatementPerConnectionSize;
 
-    @Value("${spring.datasource.filters}")
-    private String filters;
+    //@Value("${spring.datasource.filters}")
+    //private String filters;
 
     @Value("${spring.datasource.connectionProperties}")
     private String connectionProperties;
 
-    @Value("${test.tt}")
-    private String test;
+
+    //@Bean
+    public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
 
-    @Bean
-    @Primary
-    @ConfigurationProperties("spring.datasource.druid")
+    //@Bean
     public DataSource dataSource() {
         DruidDataSource datasource = new DruidDataSource();
 
-        datasource.setUrl("jdbc:mysql://127.0.0.1:3306/ikedb");
-        datasource.setUsername("root");
-        datasource.setPassword("Root1234");
+        datasource.setUrl(jdbcUrl);
+        datasource.setUsername(username);
+        datasource.setPassword(password);
         datasource.setDriverClassName("com.mysql.jdbc.Driver");
 
         //configuration
         datasource.setInitialSize(5);
         datasource.setMinIdle(5);
-        datasource.setMaxActive(20);
+        datasource.setMaxActive(maxActive);
         datasource.setMaxWait(60000);
         datasource.setTimeBetweenEvictionRunsMillis(60000);
         datasource.setMinEvictableIdleTimeMillis(60000);
@@ -107,33 +102,14 @@ public class DataBaseConfig {
         datasource.setTestOnReturn(false);
         datasource.setPoolPreparedStatements(poolPreparedStatements);
         datasource.setMaxPoolPreparedStatementPerConnectionSize(20);
-        try {
-            datasource.setFilters(filters);
-        } catch (SQLException e) {
+        //try {
+            //datasource.setFilters(filters);
+        //} catch (SQLException e) {
 
-        }
+        //}
         datasource.setConnectionProperties(connectionProperties);
 
         return datasource;
-    }
-
-
-    @Bean
-    public SpringLiquibase liquibase(DataSource dataSource) {
-        SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setDataSource(dataSource);
-        liquibase.setChangeLog("classpath:config/liquibase/master.xml");
-        liquibase.setContexts("local,dev,prod");
-        liquibase.setShouldRun(true);
-        return liquibase;
-    }
-
-
-    @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer() {
-        MapperScannerConfigurer scannerConfigurer = new MapperScannerConfigurer();
-        scannerConfigurer.setBasePackage("com.ikeapp.mapper*");
-        return scannerConfigurer;
     }
 
 

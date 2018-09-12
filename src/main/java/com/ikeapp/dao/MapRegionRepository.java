@@ -13,14 +13,5 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface MapRegionRepository extends JpaRepository<MapRegionDomain,Long>,JpaSpecificationExecutor<MapRegionDomain> {
 
-    /**
-     * 根等级获取地图大区列表
-     * @param levelSt
-     * @param pageable
-     * @return
-     */
-    @Query(value = "SELECT * FROM ike_map_region WHERE level_st = ?1",
-        countQuery = "SELECT count(*) FROM ike_map_region WHERE level_st = ?1",
-        nativeQuery = true)
-    Page<MapRegionDomain> findByLevelSt(String levelSt,Pageable pageable);
+
 }
