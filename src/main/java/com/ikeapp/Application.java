@@ -1,5 +1,6 @@
 package com.ikeapp;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -17,7 +18,7 @@ import java.net.InetAddress;
 @SpringBootApplication(scanBasePackages = { "com.ikeapp"})
 @ConfigurationProperties
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-public class Application {
+public class Application  implements CommandLineRunner {
 
 	public static void main(String[] args) {
 
@@ -35,7 +36,12 @@ public class Application {
 
 			app.setAdditionalProfiles("dev");
 		}
+
 	}
 
+	@Override
+	public void run(String... strings) throws Exception {
+		//System.out.println(user.getUserId());
+	}
 
 }
