@@ -15,20 +15,20 @@ public class CustomGenerator{
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("/Users/Ike/lzf/GitHub/springBootDemo/src/main/java");
+        gc.setOutputDir("/Users/Ike.shen/temp_work2/ikeapp/src/main/java");
         gc.setFileOverride(true);
         gc.setActiveRecord(true);
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
         gc.setBaseColumnList(true);// XML columList
-        gc.setAuthor("lzf");
+        gc.setAuthor("shenw");
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
          gc.setMapperName("%sDao");
          gc.setXmlName("%sMapper");
-         gc.setServiceName("%sService");
-         gc.setServiceImplName("%sServiceImpl");
-         gc.setControllerName("%sController");
+         //gc.setServiceName("%sService");
+         //gc.setServiceImplName("%sServiceImpl");
+         //gc.setControllerName("%sController");
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
@@ -44,9 +44,9 @@ public class CustomGenerator{
         });*/
 
         dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUrl("jdbc:mysql://localhost:3306/lzf?useUnicode=true&amp;characterEncoding=UTF-8&amp;generateSimpleParameterMetadata=true");
+        dsc.setUrl("jdbc:mysql://localhost:3306/ikedb?useUnicode=true&amp;characterEncoding=UTF-8&amp;generateSimpleParameterMetadata=true");
         dsc.setUsername("root");
-        dsc.setPassword("123");
+        dsc.setPassword("Root1234");
         mpg.setDataSource(dsc);
 
         // 策略配置
@@ -54,7 +54,7 @@ public class CustomGenerator{
         // strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
         // strategy.setTablePrefix(new String[] { "tlog_", "tsys_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        // strategy.setInclude(new String[] { "user" }); // 需要生成的表
+        strategy.setInclude(new String[] { "t_test" }); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         mpg.setStrategy(strategy);
 
