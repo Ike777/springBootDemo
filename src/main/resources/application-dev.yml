@@ -6,3 +6,6 @@ spring:
     username: root
     password: Root1234
     #type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: 127.0.0.1
+    port: 6379

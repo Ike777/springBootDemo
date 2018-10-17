@@ -12,5 +12,8 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2018-08-23
  */
 public interface ResourcesService extends IService<Resources> {
+
+
+
 	
 }

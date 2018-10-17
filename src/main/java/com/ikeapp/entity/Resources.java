@@ -3,6 +3,7 @@ package com.ikeapp.entity;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.ikeapp.systems.DemoField;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -36,6 +37,7 @@ public class Resources extends Model<Resources> {
 	private Date createdTime;
 	@TableField("update_time")
 	private Date updateTime;
+	@DemoField
 	private String name;
 	@TableField("parent_id")
 	private Integer parentId;

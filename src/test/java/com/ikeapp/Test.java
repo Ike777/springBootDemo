@@ -4,6 +4,7 @@ import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -17,27 +18,8 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) {
-        List<Ta> la = Arrays.asList(new Ta("a"), new Ta("v"), new Ta("c"),new Ta("a"));
-        List<Ta> a = new ArrayList(la);
-        HashSet sa = new HashSet(a);
-        a.clear();
-        a.addAll(sa);
-
-        System.out.println(a.size());
-
-        System.out.println(la.size());
-        List<String> re = new ArrayList<>();
-        List<Ta> cc = la.stream().filter(item -> {
-            if(re.contains(item.getT1())){
-                return false;//去重
-            }
-            re.add(item.getT1());
-            return true;
-        }).collect(Collectors.toList());
-
-
-        System.out.println(cc.size());
-
+        BigDecimal aa = BigDecimal.valueOf(11.12145d).add(BigDecimal.valueOf(21.123456d)).setScale(0,BigDecimal.ROUND_HALF_UP);
+        System.out.println(aa);
 
     }
 
