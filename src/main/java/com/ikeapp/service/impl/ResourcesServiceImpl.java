@@ -44,7 +44,7 @@ public class ResourcesServiceImpl extends ServiceImpl<ResourcesMapper, Resources
         return dao.selectList(wrapper);
     }
 
-    @Cacheable(value="page",key="all")
+    @Cacheable(value="page",key="'all'")
     public Page<Resources> queryByPage(String command){
         Page<Resources> page = new Page<Resources>();
         page.setLimit(10);
@@ -87,7 +87,7 @@ public class ResourcesServiceImpl extends ServiceImpl<ResourcesMapper, Resources
         log.info("--- resID:{}",r2.getId());
     }
 
-    @Caching(put={@CachePut(value="page",key="all")})
+    @Caching(put={@CachePut(value="page",key="'all'")})
     public Page<Resources> resetCache(){
         Page<Resources> page = new Page<Resources>();
         page.setLimit(10);
