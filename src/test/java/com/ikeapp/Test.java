@@ -1,14 +1,14 @@
 package com.ikeapp;
 
+import com.ikeapp.entity.dto.DemoDto;
+import com.ikeapp.systems.DemoFieldUtil;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
 import lombok.Data;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -18,8 +18,16 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) {
-        BigDecimal aa = BigDecimal.valueOf(11.12145d).add(BigDecimal.valueOf(21.123456d)).setScale(0,BigDecimal.ROUND_HALF_UP);
-        System.out.println(aa);
+        String[] test={"1","2","3",null,"4"};
+        List<String> tt = Arrays.asList(test).stream().filter(item -> item !=null).collect(Collectors.toList());
+        Set<String> tyt = Arrays.asList(test).stream().filter(item -> item !=null).collect(Collectors.toSet());
+
+        Map<String,String> tMap =Arrays.asList(test).stream().filter(item -> item !=null).collect(Collectors.toMap(t->t,t->t));
+        //System.out.println(tt.size());
+
+
+
+        System.out.println("aaas".contains(""));
 
     }
 

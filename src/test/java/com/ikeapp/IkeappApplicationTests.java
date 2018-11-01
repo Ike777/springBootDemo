@@ -1,14 +1,12 @@
 package com.ikeapp;
 
-import com.baomidou.mybatisplus.plugins.Page;
 import com.ikeapp.entity.Resources;
 import com.ikeapp.mapper.ResourcesMapper;
 import com.ikeapp.service.impl.ResourcesServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.annotation.MapperScan;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -18,9 +16,8 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @MapperScan("com.ikeapp.mapper*")
+@Slf4j
 public class IkeappApplicationTests {
-
-	Logger log = LoggerFactory.getLogger(IkeappApplicationTests.class);
 
 	@Resource
 	private ResourcesServiceImpl resourcesService;
@@ -46,8 +43,18 @@ public class IkeappApplicationTests {
 
 		log.info("----  End  -----");
 
-
 	}
+
+
+	@Test
+	public void testCost(){
+		try {
+			resourcesService.cost();
+		} catch (Exception e) {
+			log.error("Error",e);
+		}
+	}
+
 
 	/*
 	private void insertResource(){

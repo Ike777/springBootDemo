@@ -18,4 +18,6 @@ public @interface DemoField {
     String value() default "";
 
     String print() default "";
+
+    String format() default "yyyy-MM-dd hh:mm:ss";
 }

@@ -8,6 +8,7 @@ import com.ikeapp.entity.Resources;
 import com.ikeapp.mapper.ResourcesMapper;
 import com.ikeapp.service.ResourcesService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.ikeapp.systems.DemoMethod;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -97,6 +98,16 @@ public class ResourcesServiceImpl extends ServiceImpl<ResourcesMapper, Resources
         List<Resources> result = dao.selectPage(page,wrapper);
         page.setRecords(result);
         return page;
+    }
+
+    /**
+     * 测试Method Annotation
+     * @throws Exception
+     */
+    @DemoMethod
+    public void cost() throws Exception{
+        //do nothing
+        Thread.sleep(2000);
     }
 	
 }
