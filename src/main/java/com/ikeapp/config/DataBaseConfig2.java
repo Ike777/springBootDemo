@@ -14,13 +14,17 @@ import javax.sql.DataSource;
  * @author: wei.shen
  * @date: 2018/9/12
  */
-@Configuration
+//@Configuration
 public class DataBaseConfig2 {
     // 配置连接池
     @Bean
     @ConfigurationProperties("spring.datasource")
     public DataSource druidDataSource() {
-        return new DruidDataSource();
+        DruidDataSource dataSource =  new DruidDataSource();
+        dataSource.setRemoveAbandoned(true);
+        dataSource.setRemoveAbandonedTimeout(180);
+        dataSource.setLogAbandoned(true);
+        return dataSource;
     }
 
     @Bean
