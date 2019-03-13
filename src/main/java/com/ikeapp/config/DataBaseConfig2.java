@@ -3,10 +3,14 @@ package com.ikeapp.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import liquibase.integration.spring.SpringLiquibase;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
@@ -16,6 +20,8 @@ import javax.sql.DataSource;
  */
 //@Configuration
 public class DataBaseConfig2 {
+/*
+    private static Logger log = LoggerFactory.getLogger(DataBaseConfig2.class);
     // 配置连接池
     @Bean
     @ConfigurationProperties("spring.datasource")
@@ -43,5 +49,5 @@ public class DataBaseConfig2 {
         scannerConfigurer.setBasePackage("com.ikeapp.mapper*");
         return scannerConfigurer;
     }
-
+*/
 }

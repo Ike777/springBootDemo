@@ -1,0 +1,21 @@
+spring:
+# 只是一些基本属性
+  db:
+    readsize : 1
+  datasource:
+    master:
+      #driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/do_db1?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: 123456
+      #type: com.alibaba.druid.pool.DruidDataSource
+    slave:
+       #driverClassName: com.mysql.jdbc.Driver
+       url: jdbc:mysql://127.0.0.1:3306/do_db2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+       username: root
+       password: 123456
+       #type: com.alibaba.druid.pool.DruidDataSource
+
+  redis:
+    host: 127.0.0.1
+    port: 6379

@@ -13,4 +13,6 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface ITTestService extends IService<TTest> {
 
+    TTest queryById(Long id);
+
 }

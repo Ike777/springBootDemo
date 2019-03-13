@@ -27,6 +27,7 @@ public class SwaggerConfig {
             .apis(RequestHandlerSelectors.basePackage("com.ikeapp.rest"))
             .paths(PathSelectors.any())
             .build();
+            
     }
 
     private ApiInfo apiInfo() {
